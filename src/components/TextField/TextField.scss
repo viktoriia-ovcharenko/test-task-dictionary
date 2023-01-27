@@ -1,0 +1,22 @@
+.field {
+  margin: 0 auto;
+  text-align: center;
+
+  width: 50%;
+  height: auto;
+  margin-top: 20px;
+}
+
+.label {
+  // column-gap: 30px;
+}
+
+.input {
+  margin: 8px auto;
+
+  width: 60%;
+
+  @media(max-width: 1000px) {
+    width: 100%;
+  }
+}

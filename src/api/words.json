@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "text": "галерея",
+    "translation": "gallery"
+  },
+  {
+    "id": 2,
+    "text": "астероїд",
+    "translation": "asteroid"
+  },
+  {
+    "id": 3,
+    "text": "гепард",
+    "translation": "cheetah"
+  },
+  {
+    "id": 4,
+    "text": "мозаїка",
+    "translation": "mosaics"
+  },
+  {
+    "id": 5,
+    "text": "букет",
+    "translation": "bouquet"
+  },
+  {
+    "id": 6,
+    "text": "записка",
+    "translation": "note"
+  },
+  {
+    "id": 7,
+    "text": "коло",
+    "translation": "circle"
+  },
+  {
+    "id": 8,
+    "text": "гачок",
+    "translation": "hook"
+  },
+  {
+    "id": 9,
+    "text": "апельсин",
+    "translation": "orange"
+  },
+  {
+    "id": 10,
+    "text": "прямокутник",
+    "translation": "rectangle"
+  },
+  {
+    "id": 11,
+    "text": "лев",
+    "translation": "lion"
+  }
+]
