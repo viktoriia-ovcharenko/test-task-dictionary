@@ -47,7 +47,10 @@ export const App: React.FC<Props> = () => {
           <Route path="/" element={<HomePage words={words} onDelete={deleteWord} />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
           <Route path="*" element={<PageNotFound />} />
-          <Route path="/newWord" element={<NewWord onAdd={addWord} maxId={maxId} words={words} onDelete={deleteWord} />} />
+          <Route
+            path="/newWord"
+            element={<NewWord onAdd={addWord} maxId={maxId} words={words} onDelete={deleteWord} />}
+          />
           <Route path="/test" element={<Test words={words} />} />
         </Routes>
       </main>
