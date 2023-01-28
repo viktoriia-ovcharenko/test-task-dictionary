@@ -1,10 +1,26 @@
+@import '../../styles/utils/vars';
+
 .test {
   text-align: center;
+
+  &__title {
+    margin: 16px auto;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 56px;
+    color: $primary;
+  }
+
+  &__score {
+    color: $green
+  }
 
   &__button {
     margin-top: 44px;
     margin-bottom: 14px;
-    background-color: green;
+    background-color: $green;
     border: none;
     color: white;
     padding: 16px 24px;
@@ -14,7 +30,7 @@
     font-size: 16px;
     font-weight: bold;
   
-    border-radius: 24px;
+    border-radius: 26px;
     cursor: pointer;
   }
 }
@@ -25,12 +41,11 @@
   width: 50%;
   height: auto;
 
-  background-color: #FFFFE0;
+  background-color: $yellow;
   padding: 16px;
   border-radius: 16px;
   color: black;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
-    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 16px 20px rgba(0,0,0,0.2);
 }
 
 .test__list {
@@ -40,16 +55,27 @@
     margin-top: 8px;
     background-color: lightgray;
     padding: 16px;
-    border: 3px solid white;
-    border-radius: 20px;
-    font-size: 20px;
+    border: 2px solid #d3d3d3;
+    border-radius: 16px;
+    font-size: 23px;
 
     cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: rgb(230, 228, 228);
+      transform: scale(1.01);
+
+    }
+
+    &:active {
+      transform: scale(0.97);
+    }
   }
 }
 
 .question-text {
-  color: 	darkblue;
+  color: 	$blue;
   font-size: 34px;
 }
 
@@ -60,10 +86,9 @@
   height: auto;
   margin-top: 64px;
 
-  background-color: #FFFFE0;
+  background-color: $yellow;
   padding: 16px;
   border-radius: 16px;
-  color: black;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
-    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  color: $primary;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 16px 20px rgba(0,0,0,0.2);
 }

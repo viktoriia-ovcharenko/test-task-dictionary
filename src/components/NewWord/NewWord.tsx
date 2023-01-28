@@ -1,19 +1,30 @@
 import React, { useState } from 'react';
 import './NewWord.scss';
+import classNames from 'classnames';
 import { Word } from '../../types/Word';
 import { TextField } from '../TextField';
 import { WordsList } from '../WordsList';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { actions as countActions } from '../../features/count';
 
 interface Props {
   onAdd: (word: Word) => void;
+  onDelete: (wordId: number) => void;
   maxId: number;
   words: Word[];
 }
 
-export const NewWord: React.FC<Props> = ({ onAdd, maxId, words }) => {
-  const [count, setCount] = useState(0);
+export const NewWord: React.FC<Props> = ({
+  onAdd,
+  onDelete,
+  maxId,
+  words,
+}) => {
   const [text, setText] = useState('');
   const [translation, setTranslation] = useState('');
+
+  const dispatch = useAppDispatch();
+  const count = useAppSelector(state => state.count);
 
   const reset = () => {
     setText('');
@@ -30,7 +41,7 @@ export const NewWord: React.FC<Props> = ({ onAdd, maxId, words }) => {
     };
 
     onAdd(word);
-    setCount(currentCount => currentCount + 1);
+    dispatch(countActions.add(1));
     reset();
   };
 
@@ -60,7 +71,7 @@ export const NewWord: React.FC<Props> = ({ onAdd, maxId, words }) => {
 
         <TextField
           name="text"
-          label="Word"
+          label="Word in Ukrainian"
           value={text}
           onChange={setText}
           required
@@ -69,9 +80,10 @@ export const NewWord: React.FC<Props> = ({ onAdd, maxId, words }) => {
 
         <TextField
           name="translation"
-          label="Translation"
+          label="English translation"
           value={translation}
           onChange={setTranslation}
+          required
           isWordValid={isTranslateValid(translation)}
         />
 
@@ -79,7 +91,10 @@ export const NewWord: React.FC<Props> = ({ onAdd, maxId, words }) => {
           <div className="control">
             <button
               type="submit"
-              className="button is-link"
+              className={classNames(
+                'button is-link',
+                { disabled: isDisabled },
+              )}
               disabled={isDisabled}
             >
               Add
@@ -90,8 +105,11 @@ export const NewWord: React.FC<Props> = ({ onAdd, maxId, words }) => {
 
       {count > 0 && (
         <>
-          <p>A new word has been added!</p>
-          <WordsList words={words.slice(words.length - count)} />
+          <p className="message">A new word has been added!</p>
+          <WordsList
+            words={words.slice(0, count)}
+            onDelete={onDelete}
+          />
         </>
       )}
     </>

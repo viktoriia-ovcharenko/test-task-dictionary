@@ -13,33 +13,26 @@ function shuffle(arr: any) {
 
 export const Test: React.FC<Props> = ({ words }) => {
   const [showResults, setShowResults] = useState(false);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
-
-  const dictionary = JSON.parse(JSON.stringify(words));
+  const [currentQuestion, setCurrentQuestion] = useState(0);
 
   let questions = [];
   let i = 0;
 
   while (questions.length < 10) {
-    const copy = JSON.parse(JSON.stringify(words));
+    const dictionary = JSON.parse(JSON.stringify(words));
 
     shuffle(dictionary);
-    shuffle(copy);
-
-    copy.splice(copy.indexOf(dictionary[0]), 1);
 
     questions.push({
       text: dictionary[0].text,
       options: [
         { id: 0, text: dictionary[0].translation, isCorrect: true },
-        { id: 1, text: copy[1].translation, isCorrect: false },
-        { id: 2, text: copy[2].translation, isCorrect: false },
-        { id: 3, text: copy[3].translation, isCorrect: false },
+        { id: 1, text: dictionary[1].translation, isCorrect: false },
+        { id: 2, text: dictionary[2].translation, isCorrect: false },
+        { id: 3, text: dictionary[3].translation, isCorrect: false },
       ],
     });
-
-    dictionary.splice(0, 1);
 
     shuffle(questions[i].options);
     i += 1;
@@ -66,10 +59,10 @@ export const Test: React.FC<Props> = ({ words }) => {
 
   return (
     <div className="test">
-      <h1>Test yourself</h1>
+      <h1 className="test__title">Test yourself</h1>
 
-      <h2>
-        {`Score: ${score}`}
+      <h2 className="test__score">
+        {`Number of correct answers: ${score}`}
       </h2>
 
       {showResults ? (
