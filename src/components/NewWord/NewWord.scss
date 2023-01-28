@@ -1,58 +1,82 @@
+@import '../../styles/utils/vars';
+
 .new-word {
   text-align: center;
-  margin: 64px auto;
-
+  margin: 64px auto 0;
   width: 50%;
   height: auto;
 
-  background-color: #FFFFE0;
+  background-color: $yellow;
   padding: 16px;
   border-radius: 16px;
-  color: black;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
-    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  color: $primary;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 16px 20px rgba(0,0,0,0.2);
 
   &__title {
-    margin: 56px auto 0;
-    font-family: 'Mont';
+    margin: 16px auto;
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 800;
-    font-size: 48px;
+    font-size: 44px;
     line-height: 56px;
-    letter-spacing: -0.01em;
-    color: #0f0f11;
+    color: $primary;
   }
+
   &__field {
     margin: 0 auto;
-
     height: auto;
-  
     padding: 16px;
   }
 }
 
 .button {
-  margin-top: 44px;
-  margin-bottom: 14px;
+  display: inline-block;
+  margin-top: 34px;
+  margin-bottom: 4px;
   width: 25%;
-  background-color: green;
+  background-color: $green;
   border: none;
   color: white;
   padding: 16px 24px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 800;
 
   border-radius: 24px;
+
   cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
 }
 
-// .is-grouped {
+.disabled {
+  background-color: #d0d0b6;
 
-// }
+  &:hover {
+    transform: none;
+  }
+}
 
-// .is-link {
+.message {
+  text-align: center;
+  margin: 34px auto 0;
 
-// }
+  width: 50%;
+  height: auto;
+
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 26px;
+  letter-spacing: 0.01em;
+  color: $green;
+}

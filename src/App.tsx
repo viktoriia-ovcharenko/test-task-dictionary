@@ -9,19 +9,19 @@ import { Header } from './components/Header';
 import { PageNotFound } from './components/PageNotFound';
 import { Test } from './components/Test';
 import { useAppDispatch, useAppSelector } from './app/hooks';
-import { actions } from './features/words';
+import { actions as wordsActions } from './features/words';
+import { actions as countActions } from './features/count';
 
 interface Props {
   dictionary: Word[];
 }
 
 export const App: React.FC<Props> = () => {
-  // const [words, setWords] = useState(dictionary);
   const dispatch = useAppDispatch();
   const words = useAppSelector(state => state.words);
 
   function getWordsFromServer() {
-    dispatch(actions.setWords(dictionary));
+    dispatch(wordsActions.setWords(dictionary));
   }
 
   useEffect(() => {
@@ -29,15 +29,13 @@ export const App: React.FC<Props> = () => {
   }, []);
 
   const addWord = (word: Word) => {
-    words.push(word);
+    dispatch(wordsActions.addWords(word));
   };
 
-  // const addWord = (word: Word) => {
-  //   setWords(wordsList => [
-  //     ...wordsList,
-  //     word,
-  //   ]);
-  // };
+  const deleteWord = (wordId: number) => {
+    dispatch(wordsActions.removeWords(wordId));
+    dispatch(countActions.take(1));
+  };
 
   const maxId = Math.max(...words.map(word => word.id));
 
@@ -46,11 +44,11 @@ export const App: React.FC<Props> = () => {
       <Header />
       <main className="main">
         <Routes>
-          <Route path="/" element={<HomePage words={words} />} />
+          <Route path="/" element={<HomePage words={words} onDelete={deleteWord} />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
-          <Route path="*" element={<PageNotFound />} />
-          <Route path="/newWord" element={<NewWord onAdd={addWord} maxId={maxId} words={words} />} />
+          <Route path="/newWord" element={<NewWord onAdd={addWord} maxId={maxId} words={words} onDelete={deleteWord} />} />
           <Route path="/test" element={<Test words={words} />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </main>
     </div>

@@ -1,3 +1,5 @@
+@import '../../styles/utils/vars';
+
 .field {
   margin: 0 auto;
   text-align: center;
@@ -8,15 +10,27 @@
 }
 
 .label {
-  // column-gap: 30px;
+  margin: 56px auto 0;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+  color: $blue;
 }
 
 .input {
   margin: 8px auto;
+  height: 23px;
 
   width: 60%;
 
   @media(max-width: 1000px) {
     width: 100%;
   }
+}
+
+.is-danger {
+  color: $red;
 }
