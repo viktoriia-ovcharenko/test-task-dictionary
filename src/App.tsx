@@ -6,7 +6,7 @@ import dictionary from './api/words.json';
 import { Word } from './types/Word';
 import { NewWord } from './components/NewWord';
 import { Header } from './components/Header';
-// import { PageNotFound } from './components/PageNotFound';
+import { PageNotFound } from './components/PageNotFound';
 import { Test } from './components/Test';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { actions as wordsActions } from './features/words';
@@ -46,9 +46,9 @@ export const App: React.FC<Props> = () => {
         <Routes>
           <Route path="/" element={<HomePage words={words} onDelete={deleteWord} />} />
           <Route path="/home" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<PageNotFound />} />
           <Route path="/newWord" element={<NewWord onAdd={addWord} maxId={maxId} words={words} onDelete={deleteWord} />} />
           <Route path="/test" element={<Test words={words} />} />
-          {/* <Route path="*" element={<PageNotFound />} /> */}
         </Routes>
       </main>
     </div>
